@@ -4,8 +4,9 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 
 import { CategoriesNavBar } from '@/components/CategoriesNavBar/CategoriesNavBar'
-import { MainApplication } from '@/components/MainApplication/MainApplication'
+
 import { NavigationBar } from '@/components/NavigationBar/NavigationBar'
+import { Wrapper } from '@/components/Wrapper/Wrapper'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { CartPage } from '@/pages/CartPage/CartPage'
 import { Category1 } from '@/pages/Category1/Category1'
@@ -28,7 +29,7 @@ export const App = () => {
       <NavigationBar />
       <CategoriesNavBar />
       <Routes>
-        <Route element={<MainApplication />}>
+        <Route element={<Wrapper />}>
           <Route path='/' element={<MainPage />} />
           <Route path='/category-1' element={<Category1 />} />
           <Route path='/category-2' element={<Category2 />} />
