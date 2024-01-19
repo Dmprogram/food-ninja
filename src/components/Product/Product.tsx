@@ -6,57 +6,58 @@ import { ProductLayout } from '@/components/ProductLayout/ProductLayout'
 import { TCommonProduct } from '@/redux/features/categoriesSlice/types'
 import { priceToLocale } from '@/utils/priceToLocale'
 
-export const Product = (product: TCommonProduct) => (
+export const Product = ({
+  title,
+  description,
+  weightUnit,
+  weight,
+  price,
+  img,
+  id,
+  variants,
+  quantity,
+  hasVariants,
+}: TCommonProduct) => (
   <section className={styles.product}>
     <ProductLayout
-      id={product.id}
-      renderImage={() => <img src={product.img} alt={product.title} className={styles.product__image} />}
+      id={id}
+      renderImage={() => <img src={img} alt={title} className={styles.product__image} />}
       renderTitle={() => (
         <header>
-          <h4 className={styles.product__title}>{product.title}</h4>
+          <h4 className={styles.product__title}>{title}</h4>
         </header>
       )}
       renderDescription={() => (
         <div className={styles.product__description}>
-          <div>{product.description}</div>
+          <div>{description}</div>
           <div className={styles.product__blur} />
         </div>
       )}
-      renderDetailedDescription={(openModalProduct, id) => (
+      renderDetailedDescription={(openModalProduct) => (
         <div role='button' className={styles.product__detailedDescription} onClick={openModalProduct(id)}>
           <span>Подробнее</span>
         </div>
       )}
-      renderPrice={() =>
-        (
-          <div className={styles.product__price}>
-            {product.price ? (
-              <span>{priceToLocale(product.price)}</span>
-            ) : (
-              product?.variants && <span>От {priceToLocale(product.variants[0].price)}</span>
-            )}
-          </div>
-        ) || null
-      }
+      renderPrice={() => (
+        <div className={styles.product__price}>
+          {price ? <span>{priceToLocale(price)}</span> : variants && <span>От {priceToLocale(variants[0].price)}</span>}
+        </div>
+      )}
       renderWeight={() =>
-        (product.weight && (
+        weight ? (
           <span className={styles.product__weight}>
-            {product.weight} {product.weightUnit === 'grams' ? 'гр.' : 'л.'}
+            {weight} {weightUnit === 'grams' ? 'гр.' : 'л.'}
           </span>
-        )) ||
-        null
+        ) : null
       }
-      renderQuantity={() =>
-        (product.quantity && <span className={styles.product__quantity}>{product.quantity} шт.</span>) || null
-      }
-      renderButton={(addProductsToCart, _, openModalProduct, isAdded, id) =>
+      renderQuantity={() => (quantity ? <span className={styles.product__quantity}>{quantity} шт.</span> : null)}
+      renderButton={(addProductsToCart, _, openModalProduct, isAdded) =>
         isAdded ? (
-          <ButtonChangeCartItems id={id as number} />
+          <ButtonChangeCartItems id={id} />
         ) : (
-          (!product.hasVariants && <CustomButton title='Хочу' onClick={addProductsToCart(id as number)} />) || (
-            <CustomButton title='Выбрать' onClick={openModalProduct(id as number)} />
-          ) ||
-          null
+          (!hasVariants && <CustomButton title='Хочу' onClick={addProductsToCart(id)} />) || (
+            <CustomButton title='Выбрать' onClick={openModalProduct(id)} />
+          )
         )
       }
       renderFooter={(price, weight, quantity, button) => (

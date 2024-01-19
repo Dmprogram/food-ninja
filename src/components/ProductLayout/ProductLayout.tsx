@@ -24,13 +24,13 @@ export const ProductLayout = ({
       {renderImage?.()}
       {renderTitle?.()}
       {renderDescription?.()}
-      {renderDetailedDescription?.(openModalProduct, id as number)}
+      {renderDetailedDescription?.(openModalProduct)}
       {renderToggleButtons?.()}
       {renderFooter?.(
         renderPrice?.(),
         renderWeight?.(),
         renderQuantity?.(),
-        renderButton?.(addProductToCart, addProductToCartFromModal, openModalProduct, isAdded, id),
+        renderButton?.(addProductToCart, addProductToCartFromModal, openModalProduct, isAdded),
       )}
     </>
   )

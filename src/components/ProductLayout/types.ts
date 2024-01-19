@@ -5,22 +5,21 @@ export type TProductLayout = {
   renderImage?: () => ReactElement
   renderTitle?: () => ReactElement
   renderDescription?: () => ReactElement
-  renderPrice?: () => ReactElement | null
+  renderPrice?: () => ReactElement
   renderWeight?: () => ReactElement | null
   renderQuantity?: () => ReactElement | null
   renderButton?: (
-    addProductToCart: (arg1: number) => () => void,
-    addProductToCartFromModal: (arg1: number, arg2: string) => () => void,
-    openModalProduct: (arg: number) => () => void,
+    addProductToCart: (id: number) => () => void,
+    addProductToCartFromModal: (id: number, option: string) => () => void,
+    openModalProduct: (id: number) => () => void,
     isAdded: boolean,
-    id: number | null,
-  ) => ReactElement | null
-  renderDetailedDescription?: (arg1: (arg2: number) => () => void, arg3: number) => void
+  ) => ReactElement
+  renderDetailedDescription?: (func: (arg: number) => () => void) => ReactElement
   renderToggleButtons?: () => ReactElement | null
   renderFooter?: (
-    arg1: ReactElement | undefined | null,
+    arg1: ReactElement | undefined,
     arg2: ReactElement | undefined | null,
     arg3: ReactElement | undefined | null,
-    ar4: ReactElement | undefined | null,
-  ) => ReactElement | null
+    arg4: ReactElement | undefined,
+  ) => ReactElement
 }

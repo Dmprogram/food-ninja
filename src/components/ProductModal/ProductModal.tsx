@@ -134,11 +134,11 @@ export const ProductModal = () => {
                   )) ||
                   null
                 }
-                renderButton={(_, addProductToCartFromModal, __, ___, id) =>
+                renderButton={(_, addProductToCartFromModal) =>
                   (
                     <CustomButton
                       title='Хочу'
-                      onClick={addProductToCartFromModal(id as number, value as string)}
+                      onClick={addProductToCartFromModal(productForModal?.id as number, value as string)}
                       disabled={!isOpenModal}
                       minWidth='50%'
                     />
