@@ -1,0 +1,111 @@
+{
+  "id": "zxcdaqew21",
+  "categoryName": "Роллы",
+  "slug": "rolls",
+  "data": [
+    {
+      "id": 1,
+      "title": "Снежный краб",
+      "slug": "rolls",
+      "description": "Рис, снежный краб, огурец, сыр филадельфия, унаги соус, кунжут.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/6-2.jpg",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 159,
+      "weight": 220,
+      "quantityInCart": 0
+    },
+    {
+      "id": 2,
+      "title": "Бонито с крабом спайси",
+      "slug": "rolls",
+      "description": "Рис, нори, крабовые палочки, авокадо, соус Спайси, стружка тунца.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/bonito-spajsi.jpg",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 149,
+      "weight": 170,
+      "quantityInCart": 0
+    },
+    {
+      "id": 3,
+      "title": "Бонито с крабом",
+      "slug": "rolls",
+      "description": "Рис, нори, сыр филадельфия, крабовые палочки, стружка тунца.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/bonito-s-krabom.jpg",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 149,
+      "weight": 180,
+      "quantityInCart": 0
+    },
+    {
+      "id": 4,
+      "title": "Нагано c угрем",
+      "slug": "rolls",
+      "description": "Рис, нори, сыр филадельфия, угорь, авокадо, икра тобико оранжевая.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/6pbx4niilim.webp",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 379,
+      "weight": 210,
+      "quantityInCart": 0
+    },
+    {
+      "id": 5,
+      "title": "Филадельфия с беконом",
+      "slug": "rolls",
+      "description": "Рис, нори, сыр филадельфия, огурец, бекон.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/filadelfiya-s-bekonom-1.jpg",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 149,
+      "weight": 180,
+      "quantityInCart": 0
+    },
+    {
+      "id": 6,
+      "title": "Филадельфия с лососем",
+      "slug": "rolls",
+      "description": "Рис, нори, сыр филадельфия, лосось, огурец, кунжут.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/filadelfiya-s-lososem-1.jpg",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 299,
+      "weight": 190,
+      "quantityInCart": 0
+    },
+    {
+      "id": 7,
+      "title": "Филадельфия с огурцом лайт",
+      "slug": "rolls",
+      "description": "Рис, нори, сыр филадельфия, лосось, огурец.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/filadelfiya-s-ogurczom-lajt-1.jpg",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 299,
+      "weight": 190,
+      "quantityInCart": 0
+    },
+    {
+      "id": 8,
+      "title": "Филадельфия с огурцом",
+      "slug": "rolls",
+      "description": "Рис, сыр творожный, огурец, лосось свежий.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2022/03/filadelfiya-s-ogurczom-1.jpg",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 459,
+      "weight": 210,
+      "quantityInCart": 0
+    }
+  ]
+}

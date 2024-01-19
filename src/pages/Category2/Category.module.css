@@ -1,0 +1,16 @@
+.category__header {
+  margin: 20px 0 40px;
+  font-size: inherit;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 25px;
+}
+
+@media screen and (width <= 420px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}

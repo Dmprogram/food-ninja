@@ -1,0 +1,119 @@
+{
+  "id": "xzcsdq3221",
+  "categoryName": "Пицца",
+  "slug": "pizza",
+  "data": [
+    {
+      "id": 9,
+      "title": "Пепперони",
+      "slug": "pizza",
+      "description": "Та самая классическая итальянская пицца. Колбаса пепперони, сыр гауда и сыр моцарелла.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2021/12/2-768x768-1-600x600.jpg",
+      "currency": "RUB",
+      "hasVariants": true,
+      "variants": [
+        { "id": 12312, "size": "25 см", "price": 399, "weight": 400, "quantityInCart": 0 },
+        { "id": 2221, "size": "30 см", "price": 549, "weight": 530, "quantityInCart": 0 }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Пепперчини",
+      "slug": "pizza",
+      "description": "На первом месте по остроте пицца «Пепперчини» — вот вроде бы делаешь первый кусь и сначала все идет хорошо, чувствуешь два вида сыра, помидорки… но тут в дело вступает огненный халапеньо и перченые пепперони. О-о-о!!! Во рту разгорается настоящий пожар! Рекомендуем потушить его холодным морсом.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2021/12/p-4-768x768-1-600x600.jpg",
+      "currency": "RUB",
+      "hasVariants": true,
+      "variants": [
+        { "id": 454, "size": "25 см", "price": 399, "weight": 360, "quantityInCart": 0 },
+        { "id": 435, "size": "30 см", "price": 549, "weight": 500, "quantityInCart": 0 }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "4 сыра",
+      "slug": "pizza",
+      "description": "Ассорти сыров из пармезана, гауды, моцареллы и чеддера со свежими спелыми томатами.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2021/12/6-1-768x768-1-600x600.jpg",
+      "currency": "RUB",
+      "hasVariants": true,
+      "variants": [
+        { "id": 345345, "size": "25 см", "price": 449, "weight": 400, "quantityInCart": 0 },
+        { "id": 3223, "size": "30 см", "price": 599, "weight": 550, "quantityInCart": 0 }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Бифбургер",
+      "slug": "pizza",
+      "description": "Карбонад, копченая колбаса, корнишоны, моцарелла, пармезан и томаты. Вот и весь секрет.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2021/12/p-3-768x768-1-600x600.jpg",
+      "currency": "RUB",
+      "hasVariants": true,
+      "variants": [
+        { "id": 12132, "size": "25 см", "price": 449, "weight": 460, "quantityInCart": 0 },
+        { "id": 678, "size": "30 см", "price": 599, "weight": 590, "quantityInCart": 0 }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Баварская",
+      "slug": "pizza",
+      "description": "Ветчина, сыр гауда и чеддер, томаты черри, секретный ингредиент и правильное название.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2021/12/n1-768x768-1-600x600.jpg",
+      "currency": "RUB",
+      "hasVariants": true,
+      "variants": [
+        { "id": 5675, "size": "25 см", "price": 449, "weight": 400, "quantityInCart": 0 },
+        { "id": 4544, "size": "30 см", "price": 649, "weight": 630, "quantityInCart": 0 }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Мясная",
+      "slug": "pizza",
+      "description": "Суперзвезда среди пицц! Чтобы ее приготовить мы берем бекон, ветчину, карбонад, охотничьи колбаски, сыр чеддер с гаудой и не забываем про томаты черри.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2021/12/3-1-768x768-1-600x600.jpg",
+      "currency": "RUB",
+      "hasVariants": true,
+      "variants": [
+        { "id": 6756, "size": "25 см", "price": 549, "weight": 440, "quantityInCart": 0 },
+        { "id": 35434, "size": "30 см", "price": 729, "weight": 700, "quantityInCart": 0 }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Цыпленок Ранч",
+      "slug": "pizza",
+      "description": "Куриное филе, сочный болгарский перец, сыр гауда, пармезан и спелые томаты. Разве нужно что-то еще?",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2021/12/4-1-768x768-1-600x600.jpg",
+      "currency": "RUB",
+      "hasVariants": true,
+      "variants": [
+        { "id": 123132, "size": "25 см", "price": 449, "weight": 420, "quantityInCart": 0 },
+        { "id": 2322, "size": "30 см", "price": 649, "weight": 600, "quantityInCart": 0 }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Сырный цыпленок",
+      "slug": "pizza",
+      "description": "Куриное филе, соус барбекю, сыр моцарелла, сыр гауда, помидор, укроп.",
+      "weightUnit": "grams",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2021/12/5-1-768x7681-1-600x600.jpg",
+      "currency": "RUB",
+      "hasVariants": true,
+      "variants": [
+        { "id": 34323445, "size": "25 см", "price": 449, "weight": 440, "quantityInCart": 0 },
+        { "id": 123123, "size": "30 см", "price": 649, "weight": 650, "quantityInCart": 0 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "id": "zxxzcq221@",
+  "categoryName": "Напитки",
+  "slug": "drinks",
+  "data": [
+    {
+      "id": 25,
+      "title": "Морс Клюква",
+      "slug": "drinks",
+      "description": "100% натуральный морс Объем 0,45 л.",
+      "weight": 0.45,
+      "weightUnit": "litres",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/klyukva.jpg",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 120,
+      "quantityInCart": 0
+    },
+    {
+      "id": 26,
+      "title": "Морс Вишня",
+      "slug": "drinks",
+      "description": "100% натуральный морс Объем 0,45 л.",
+      "weight": 0.45,
+      "weightUnit": "litres",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/vishnya.jpg",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 120,
+      "quantityInCart": 0
+    },
+    {
+      "id": 27,
+      "title": "Морс Облепиха",
+      "slug": "drinks",
+      "description": "100% натуральный морс Объем 0,45 л.",
+      "weight": 0.45,
+      "weightUnit": "litres",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/oblepiha.jpg",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 120,
+      "quantityInCart": 0
+    },
+    {
+      "id": 28,
+      "title": "Добрый Кола",
+      "slug": "drinks",
+      "description": "Добрый Кола",
+      "weightUnit": "litres",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/dobryj-kola-1l-600x600.jpg",
+      "currency": "RUB",
+      "hasVariants": true,
+      "variants": [
+        { "id": 12312123, "size": "0.5 литра", "price": 120, "weight": 0.5, "quantityInCart": 0 },
+        { "id": 435345, "size": "1 литр", "price": 150, "weight": 1, "quantityInCart": 0 }
+      ]
+    },
+    {
+      "id": 29,
+      "title": "Добрый лимон-лайм",
+      "slug": "drinks",
+      "description": "Добрый лимон-лайм",
+      "weightUnit": "litres",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/dobryj-limon-lajm-05.jpg",
+      "currency": "RUB",
+      "hasVariants": true,
+      "variants": [
+        { "id": 23324342, "size": "0.5 литра", "price": 120, "weight": 0.5, "quantityInCart": 0 },
+        { "id": 214124, "size": "1 литр", "price": 150, "weight": 1, "quantityInCart": 0 }
+      ]
+    },
+    {
+      "id": 30,
+      "title": "Добрый Яблоко 1 л.",
+      "slug": "drinks",
+      "description": "Сок Добрый Яблоко (1 литр)",
+      "weight": 1,
+      "weightUnit": "litres",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/mxyo1wnx_hq.webp",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 150,
+      "quantityInCart": 0
+    },
+    {
+      "id": 31,
+      "title": "Добрый Мультифрукт 1 л.",
+      "slug": "drinks",
+      "description": "Сок Добрый Мультифрукт (1 литр)",
+      "weight": 1,
+      "weightUnit": "litres",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/hic9uhmv2oo.webp",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 150,
+      "quantityInCart": 0
+    },
+    {
+      "id": 32,
+      "title": "Добрый Персик-Яблоко 1 л.",
+      "slug": "drinks",
+      "description": "Сок Добрый Персик-Яблоко (1 литр)",
+      "weight": 1,
+      "weightUnit": "litres",
+      "img": "https://demo.foodninja.pro/wp-content/uploads/2020/09/fcbpmyd_dxo.webp",
+      "currency": "RUB",
+      "hasVariants": false,
+      "price": 150,
+      "quantityInCart": 0
+    }
+  ]
+}
