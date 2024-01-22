@@ -8,7 +8,18 @@ import { CartItemLayout } from '@/components/CartItemLayout/CartItemLayout'
 import { TCommonProduct } from '@/redux/features/categoriesSlice/types'
 import { priceToLocale } from '@/utils/priceToLocale'
 
-export const CartItem = ({ title, size, weightUnit, weight, price, img, id, slug, quantity }: TCommonProduct) => (
+export const CartItem = ({
+  title,
+  size,
+  weightUnit,
+  weight,
+  price,
+  img,
+  id,
+  slug,
+  quantity,
+  quantityInCart,
+}: TCommonProduct) => (
   <section className={styles.cartItem}>
     <CartItemLayout
       id={id}
@@ -38,7 +49,7 @@ export const CartItem = ({ title, size, weightUnit, weight, price, img, id, slug
         </div>
       )}
       renderButton={(_, __, ___, isAdded) => (isAdded ? <ButtonChangeCartItems id={id} /> : null)}
-      renderPrice={() => <div className={styles.cartItem__price}>{priceToLocale(price as number)}</div>}
+      renderPrice={() => <div className={styles.cartItem__price}>{priceToLocale(price! * quantityInCart!)}</div>}
       renderDeleteProduct={(deleteProduct) => (
         <Toolbar
           sx={{
