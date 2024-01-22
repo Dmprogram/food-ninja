@@ -1,12 +1,11 @@
-import { useEffect } from 'react'
-
 import './App.css'
+import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { CategoriesNavBar } from '@/components/CategoriesNavBar/CategoriesNavBar'
 
 import { NavigationBar } from '@/components/NavigationBar/NavigationBar'
-import { Wrapper } from '@/components/Wrapper/Wrapper'
+import { CategoriesWrapper } from '@/components/Wrapper/CategoriesWrapper'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { CartPage } from '@/pages/CartPage/CartPage'
 import { Category1 } from '@/pages/Category1/Category1'
@@ -19,25 +18,24 @@ import { fetchCategories } from '@/redux/features/categoriesSlice/categoriesActi
 
 export const App = () => {
   const dispatch = useAppDispatch()
-
   useEffect(() => {
     dispatch(fetchCategories())
-  })
+  }, [])
 
   return (
     <main className='container'>
       <NavigationBar />
       <CategoriesNavBar />
       <Routes>
-        <Route element={<Wrapper />}>
+        <Route element={<CategoriesWrapper />}>
           <Route path='/' element={<MainPage />} />
           <Route path='/category-1' element={<Category1 />} />
           <Route path='/category-2' element={<Category2 />} />
           <Route path='/category-3' element={<Category3 />} />
           <Route path='/category-4' element={<Category4 />} />
-          <Route path='/cart' element={<CartPage />} />
-          <Route path='*' element={<NotFoundPage />} />
         </Route>
+        <Route path='/cart' element={<CartPage />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </main>
   )

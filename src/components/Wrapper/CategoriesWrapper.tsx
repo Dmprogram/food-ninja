@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
-import styles from './Wrapper.module.css'
+import styles from './CategoriesWrapper.module.css'
 
 import { ProductModal } from '@/components/ProductModal/ProductModal'
 
@@ -8,8 +8,9 @@ import { ProductsSkeleton } from '@/components/ProductSkeleton/ProductsSkeleton'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { selectCategoriesState } from '@/redux/features/categoriesSlice/selector'
 
-export const Wrapper = () => {
+export const CategoriesWrapper = () => {
   // Check auth and etc
+
   const { loading } = useAppSelector(selectCategoriesState)
 
   if (loading === 'pending') {
