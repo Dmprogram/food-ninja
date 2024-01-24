@@ -31,11 +31,11 @@ export const Product = (product: TCommonProduct) => (
       )}
       renderPrice={() => (
         <div className={styles.product__price}>
-          {product.price ? (
-            <span>{priceToLocale(product.price)}</span>
-          ) : (
-            product.variants && <span>От {priceToLocale(product.variants[0].price)}</span>
-          )}
+          <span>
+            {product.price
+              ? priceToLocale(product.price)
+              : product.variants && `От${priceToLocale(product.variants[0].price)}`}
+          </span>
         </div>
       )}
       renderWeight={() =>

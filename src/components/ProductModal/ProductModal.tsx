@@ -83,58 +83,40 @@ export const ProductModal = ({ isOpenModal }: { isOpenModal: boolean }) => {
                   </div>
                 )}
                 renderToggleButtons={() =>
-                  (productForModal.hasVariants && (
+                  productForModal.hasVariants ? (
                     <div className={styles.productModal__toggleButtons}>
                       <div className={styles.productModal__size}>
                         {productForModal.slug === 'pizza' ? 'Размер' : 'Объем'}
                       </div>
                       <ProductModalButtonGroupes option={option!} setOption={setOption} slug={productForModal.slug} />
                     </div>
-                  )) ||
-                  null
+                  ) : null
                 }
-                renderPrice={() =>
-                  (
-                    <div className={styles.productModal__price}>
-                      {productForModal.price ? (
-                        <span>{priceToLocale(productForModal.price)}</span>
-                      ) : (
-                        productForModal.variants && (
-                          <span>
-                            {priceToLocale(
-                              option === 'first'
-                                ? productForModal.variants[0].price
-                                : productForModal.variants[1].price,
-                            )}
-                          </span>
-                        )
-                      )}
-                    </div>
-                  ) || null
-                }
-                renderWeight={() =>
-                  (
-                    <span className={styles.productModal__weight}>
-                      {productForModal.weight ? (
-                        <span>{productForModal.weight}</span>
-                      ) : (
-                        productForModal.variants && (
-                          <span>
-                            {option === 'first'
-                              ? productForModal.variants[0].weight
-                              : productForModal.variants[1].weight}
-                          </span>
-                        )
-                      )}
-                      <span>{productForModal.weightUnit === 'grams' ? ' гр.' : ' л.'}</span>
+                renderPrice={() => (
+                  <div className={styles.productModal__price}>
+                    <span>
+                      {productForModal.price
+                        ? priceToLocale(productForModal.price)
+                        : productForModal.variants &&
+                          priceToLocale(
+                            option === 'first' ? productForModal.variants[0].price : productForModal.variants[1].price,
+                          )}
                     </span>
-                  ) || null
-                }
+                  </div>
+                )}
+                renderWeight={() => (
+                  <span className={styles.productModal__weight}>
+                    {productForModal.weight
+                      ? productForModal.weight
+                      : productForModal.variants &&
+                        (option === 'first' ? productForModal.variants[0].weight : productForModal.variants[1].weight)}
+                    {productForModal.weightUnit === 'grams' ? ' гр.' : ' л.'}
+                  </span>
+                )}
                 renderQuantity={() =>
-                  (productForModal.quantity && (
+                  productForModal.quantity ? (
                     <span className={styles.productModal__quantity}>{productForModal.quantity} шт.</span>
-                  )) ||
-                  null
+                  ) : null
                 }
                 renderButton={(_, addProductToCartFromModal) => (
                   <CustomButton

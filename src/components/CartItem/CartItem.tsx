@@ -23,17 +23,16 @@ export const CartItem = (cartItem: TCommonProduct) => (
       )}
       renderTitle={() => <div className={styles.cartItem__title}>{cartItem.title}</div>}
       renderSize={() =>
-        (cartItem.size && (
+        cartItem.size ? (
           <div className={styles.cartItem__size}>
             {cartItem.slug === 'pizza' ? 'Размер:' : null} {cartItem.size}
           </div>
-        )) ||
-        null
+        ) : null
       }
       renderWeight={() => (
         <div className={styles.cartItem__weight}>
           {cartItem.weightUnit === 'litres' && 'Объем: '}
-          {cartItem.weight} {(cartItem.weightUnit === 'grams' && 'гр.') || (cartItem.weightUnit === 'litres' && 'л.')}{' '}
+          {cartItem.weight} {(cartItem.weightUnit === 'grams' && 'гр.') || (cartItem.weightUnit === 'litres' && 'л.')}
           {cartItem.quantity}
           {cartItem.quantity && ' шт.'}
         </div>
