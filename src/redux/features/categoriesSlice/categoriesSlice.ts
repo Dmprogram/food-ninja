@@ -1,25 +1,17 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 import { fetchCategories } from '@/redux/features/categoriesSlice/categoriesActions'
-import { TCategoriesState, TCommonProduct } from '@/redux/features/categoriesSlice/types'
+import { TCategoriesState } from '@/redux/features/categoriesSlice/types'
 
 const initialState: TCategoriesState = {
   loading: 'idle',
   error: null,
   categories: null,
-  isOpenModal: false,
-  productForModal: null,
 }
 export const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
-  reducers: {
-    resetState: () => initialState,
-    setIsOpenModal: (state, action: PayloadAction<{ product: TCommonProduct | null; isOpenModal: boolean }>) => {
-      state.isOpenModal = action.payload.isOpenModal
-      state.productForModal = action.payload.product
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategories.pending, (state) => {

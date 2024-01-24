@@ -53,8 +53,6 @@ export type TCategoriesState = {
   loading: 'idle' | 'pending' | 'succeeded' | 'failed'
   error: any
   categories: TCategoriesArray | null
-  isOpenModal: boolean
-  productForModal: TCommonProduct | null
 }
 
 enum CategoryName {

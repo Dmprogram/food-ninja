@@ -6,13 +6,14 @@ import { ProductModal } from '@/components/ProductModal/ProductModal'
 
 import { ProductsSkeleton } from '@/components/ProductSkeleton/ProductsSkeleton'
 import { useAppSelector } from '@/hooks/useReduxHooks'
-import { selectCategoriesState, selectIsOpenModal } from '@/redux/features/categoriesSlice/selector'
+import { selectCategoriesState } from '@/redux/features/categoriesSlice/selector'
+import { selectIsOpenProductModal } from '@/redux/features/productModalSlice/selector'
 
 export const CategoriesWrapper = () => {
   // Check auth and etc
 
   const { loading } = useAppSelector(selectCategoriesState)
-  const isOpenModal = useAppSelector(selectIsOpenModal)
+  const isOpenProductModal = useAppSelector(selectIsOpenProductModal)
 
   if (loading === 'pending') {
     return <ProductsSkeleton />
@@ -22,7 +23,7 @@ export const CategoriesWrapper = () => {
     return (
       <section className={styles.container}>
         <Outlet />
-        {isOpenModal && <ProductModal isOpenModal={isOpenModal} />}
+        {isOpenProductModal && <ProductModal isOpenProductModal={isOpenProductModal} />}
       </section>
     )
   }

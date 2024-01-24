@@ -10,33 +10,33 @@ import { CustomButton } from '@/components/CustomButton/CustomButton'
 import { ProductLayout } from '@/components/ProductLayout/ProductLayout'
 import { ProductModalButtonGroupes } from '@/components/ProductModalButtonGroupes/ProductModalButtonGroupes'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
-import { categoriesActions } from '@/redux/features/categoriesSlice/categoriesSlice'
-import { selectProductModal } from '@/redux/features/categoriesSlice/selector'
+import { productModalActions } from '@/redux/features/productModalSlice/productModalSlice'
+import { selectProductModal } from '@/redux/features/productModalSlice/selector'
 import { priceToLocale } from '@/utils/priceToLocale'
 
-export const ProductModal = ({ isOpenModal }: { isOpenModal: boolean }) => {
-  const productForModal = useAppSelector(selectProductModal)
+export const ProductModal = ({ isOpenProductModal }: { isOpenProductModal: boolean }) => {
+  const productModal = useAppSelector(selectProductModal)
 
   const dispatch = useAppDispatch()
   const [option, setOption] = React.useState<null | string>('first')
   React.useEffect(() => {
-    if (!productForModal?.hasVariants) {
+    if (!productModal?.hasVariants) {
       setOption(null)
     } else {
       setOption('first')
     }
-  }, [productForModal])
+  }, [productModal])
 
   const handleClose = () => {
-    dispatch(categoriesActions.setIsOpenModal({ isOpenModal: false, product: null }))
+    dispatch(productModalActions.setIsOpenModal({ isOpenProductModal: false, product: null }))
   }
 
   return (
-    productForModal && (
+    productModal && (
       <Dialog
         fullWidth
         maxWidth='md'
-        open={isOpenModal}
+        open={isOpenProductModal}
         onClose={handleClose}
         PaperProps={{ sx: { borderRadius: '20px', height: '595px' } }}
       >
@@ -57,7 +57,7 @@ export const ProductModal = ({ isOpenModal }: { isOpenModal: boolean }) => {
               padding: '20px',
             }}
           >
-            <img src={productForModal.img} alt={productForModal.title} style={{ width: '100%' }} />
+            <img src={productModal.img} alt={productModal.title} style={{ width: '100%' }} />
           </Box>
           <Box
             sx={{
@@ -71,58 +71,58 @@ export const ProductModal = ({ isOpenModal }: { isOpenModal: boolean }) => {
           >
             <section className={styles.productModal}>
               <ProductLayout
-                id={productForModal.id}
+                id={productModal.id}
                 renderTitle={() => (
                   <header>
-                    <h4 className={styles.productModal__title}>{productForModal.title}</h4>
+                    <h4 className={styles.productModal__title}>{productModal.title}</h4>
                   </header>
                 )}
                 renderDescription={() => (
                   <div className={styles.productModal__description}>
-                    <div>{productForModal.description}</div>
+                    <div>{productModal.description}</div>
                   </div>
                 )}
                 renderToggleButtons={() =>
-                  productForModal.hasVariants ? (
+                  productModal.hasVariants ? (
                     <div className={styles.productModal__toggleButtons}>
                       <div className={styles.productModal__size}>
-                        {productForModal.slug === 'pizza' ? 'Размер' : 'Объем'}
+                        {productModal.slug === 'pizza' ? 'Размер' : 'Объем'}
                       </div>
-                      <ProductModalButtonGroupes option={option!} setOption={setOption} slug={productForModal.slug} />
+                      <ProductModalButtonGroupes option={option!} setOption={setOption} slug={productModal.slug} />
                     </div>
                   ) : null
                 }
                 renderPrice={() => (
                   <div className={styles.productModal__price}>
                     <span>
-                      {productForModal.price
-                        ? priceToLocale(productForModal.price)
-                        : productForModal.variants &&
+                      {productModal.price
+                        ? priceToLocale(productModal.price)
+                        : productModal.variants &&
                           priceToLocale(
-                            option === 'first' ? productForModal.variants[0].price : productForModal.variants[1].price,
+                            option === 'first' ? productModal.variants[0].price : productModal.variants[1].price,
                           )}
                     </span>
                   </div>
                 )}
                 renderWeight={() => (
                   <span className={styles.productModal__weight}>
-                    {productForModal.weight
-                      ? productForModal.weight
-                      : productForModal.variants &&
-                        (option === 'first' ? productForModal.variants[0].weight : productForModal.variants[1].weight)}
-                    {productForModal.weightUnit === 'grams' ? ' гр.' : ' л.'}
+                    {productModal.weight
+                      ? productModal.weight
+                      : productModal.variants &&
+                        (option === 'first' ? productModal.variants[0].weight : productModal.variants[1].weight)}
+                    {productModal.weightUnit === 'grams' ? ' гр.' : ' л.'}
                   </span>
                 )}
                 renderQuantity={() =>
-                  productForModal.quantity ? (
-                    <span className={styles.productModal__quantity}>{productForModal.quantity} шт.</span>
+                  productModal.quantity ? (
+                    <span className={styles.productModal__quantity}>{productModal.quantity} шт.</span>
                   ) : null
                 }
                 renderButton={(_, addProductToCartFromModal) => (
                   <CustomButton
                     title='Хочу'
-                    onClick={() => addProductToCartFromModal(productForModal, option)}
-                    disabled={!isOpenModal}
+                    onClick={() => addProductToCartFromModal(productModal, option)}
+                    disabled={!isOpenProductModal}
                     minWidth='50%'
                   />
                 )}

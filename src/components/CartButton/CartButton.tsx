@@ -16,14 +16,16 @@ export const CartButton = () => {
   const cartProducts = useAppSelector(selectCartProducts)
   const totalPrice = countTotalAmount(cartProducts)
   const totalAmount = useAppSelector(selectTotalAmount)
+
   useEffect(() => {
     dispatch(cartActions.addTotalAmount(totalPrice))
   }, [totalPrice])
+
   const navigate = useNavigate()
   return (
     <button type='button' className={styles.button} onClick={() => navigate('/cart')}>
       <img className={styles.button__image} src={shoppingCart} alt='Корзина' />
-      <span className={styles.button__totalAmount}>{priceToLocale(totalAmount || 0)}</span>
+      <span className={styles.button__totalAmount}>{totalAmount && priceToLocale(totalAmount)}</span>
     </button>
   )
 }
