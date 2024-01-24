@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 
 import { TProductLayout } from '@/components/ProductLayout/types'
 
-export type TCartItemLayout = Omit<TProductLayout, 'renderButton'> & {
+export type TCartItemLayout = TProductLayout & {
   renderSize?: () => ReactElement | null
   renderMainInformationLeft?: (
     arg1: ReactElement | undefined,
@@ -10,11 +10,5 @@ export type TCartItemLayout = Omit<TProductLayout, 'renderButton'> & {
     arg3: ReactElement | undefined | null,
     ar4: ReactElement | undefined | null,
   ) => ReactElement | null
-  renderDeleteProduct?: (func: (arg: number) => () => void) => ReactElement
-  renderButton?: (
-    addProductToCart: (id: number) => () => void,
-    addProductToCartFromModal: (id: number, option: string) => () => void,
-    openModalProduct: (id: number) => () => void,
-    isAdded: boolean,
-  ) => ReactElement | null
+  renderDeleteProduct?: (fun: (productId: number) => void) => ReactElement
 }

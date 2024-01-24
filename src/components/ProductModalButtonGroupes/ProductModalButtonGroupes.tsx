@@ -4,19 +4,19 @@ import * as React from 'react'
 
 type TProductModalButtonGroup = {
   slug: string
-  value: string
-  setValue: (value: string) => void
+  option: string
+  setOption: (option: string) => void
 }
-export const ProductModalButtonGroupes = ({ slug, value, setValue }: TProductModalButtonGroup) => {
+export const ProductModalButtonGroupes = ({ slug, option, setOption }: TProductModalButtonGroup) => {
   const handleChange = (_: React.MouseEvent<HTMLElement>, newValue: string) => {
     if (newValue === null) {
       return
     }
-    setValue(newValue)
+    setOption(newValue)
   }
   return (
     <div style={{ padding: '3px', backgroundColor: '#DEE2E6', borderRadius: '20px' }}>
-      <ToggleButtonGroup value={value} exclusive onChange={handleChange} aria-label='Platform' sx={{ width: '100%' }}>
+      <ToggleButtonGroup value={option} exclusive onChange={handleChange} aria-label='Platform' sx={{ width: '100%' }}>
         <ToggleButton
           sx={{
             '&.MuiToggleButtonGroup-grouped': {

@@ -8,22 +8,11 @@ import { CartItemLayout } from '@/components/CartItemLayout/CartItemLayout'
 import { TCommonProduct } from '@/redux/features/categoriesSlice/types'
 import { priceToLocale } from '@/utils/priceToLocale'
 
-export const CartItem = ({
-  title,
-  size,
-  weightUnit,
-  weight,
-  price,
-  img,
-  id,
-  slug,
-  quantity,
-  quantityInCart,
-}: TCommonProduct) => (
+export const CartItem = (cartItem: TCommonProduct) => (
   <section className={styles.cartItem}>
     <CartItemLayout
-      id={id}
-      renderImage={() => <img src={img} alt={title} className={styles.cartItem__image} />}
+      id={cartItem.id}
+      renderImage={() => <img src={cartItem.img} alt={cartItem.title} className={styles.cartItem__image} />}
       renderMainInformationLeft={(title, size, weight, quantity) => (
         <section className={styles.cartItem__mainInformation}>
           {title}
@@ -32,24 +21,27 @@ export const CartItem = ({
           {quantity}
         </section>
       )}
-      renderTitle={() => <div className={styles.cartItem__title}>{title}</div>}
+      renderTitle={() => <div className={styles.cartItem__title}>{cartItem.title}</div>}
       renderSize={() =>
-        (size && (
+        (cartItem.size && (
           <div className={styles.cartItem__size}>
-            {slug === 'pizza' ? 'Размер:' : null} {size}
+            {cartItem.slug === 'pizza' ? 'Размер:' : null} {cartItem.size}
           </div>
         )) ||
         null
       }
       renderWeight={() => (
         <div className={styles.cartItem__weight}>
-          {weightUnit === 'litres' && 'Объем: '}
-          {weight} {(weightUnit === 'grams' && 'гр.') || (weightUnit === 'litres' && 'л.')} {quantity}
-          {quantity && ' шт.'}
+          {cartItem.weightUnit === 'litres' && 'Объем: '}
+          {cartItem.weight} {(cartItem.weightUnit === 'grams' && 'гр.') || (cartItem.weightUnit === 'litres' && 'л.')}{' '}
+          {cartItem.quantity}
+          {cartItem.quantity && ' шт.'}
         </div>
       )}
-      renderButton={(_, __, ___, isAdded) => (isAdded ? <ButtonChangeCartItems id={id} /> : null)}
-      renderPrice={() => <div className={styles.cartItem__price}>{priceToLocale(price! * quantityInCart!)}</div>}
+      renderButton={(_, __, ___, isAdded) => (isAdded ? <ButtonChangeCartItems {...cartItem} /> : null)}
+      renderPrice={() => (
+        <div className={styles.cartItem__price}>{priceToLocale(cartItem.price! * cartItem.quantityInCart!)}</div>
+      )}
       renderDeleteProduct={(deleteProduct) => (
         <Toolbar
           sx={{
@@ -61,7 +53,7 @@ export const CartItem = ({
             edge='end'
             color='inherit'
             aria-label='close'
-            onClick={deleteProduct(id)}
+            onClick={() => deleteProduct(cartItem.id)}
             sx={{ position: 'absolute' }}
           >
             <CloseIcon />

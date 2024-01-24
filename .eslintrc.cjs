@@ -98,7 +98,7 @@ module.exports = {
         },
       },
     ],
-    'react/destructuring-assignment': ['warn', 'always'],
+    'react/destructuring-assignment': ['off', 'always'],
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/interactive-supports-focus': 'off',
     'import/no-cycle': 'off',

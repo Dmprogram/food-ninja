@@ -11,28 +11,28 @@ import { ProductLayout } from '@/components/ProductLayout/ProductLayout'
 import { ProductModalButtonGroupes } from '@/components/ProductModalButtonGroupes/ProductModalButtonGroupes'
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 import { categoriesActions } from '@/redux/features/categoriesSlice/categoriesSlice'
-import { selectIsOpenModal, selectProductModal } from '@/redux/features/categoriesSlice/selector'
+import { selectProductModal } from '@/redux/features/categoriesSlice/selector'
 import { priceToLocale } from '@/utils/priceToLocale'
 
-export const ProductModal = () => {
-  const isOpenModal = useAppSelector(selectIsOpenModal)
+export const ProductModal = ({ isOpenModal }: { isOpenModal: boolean }) => {
   const productForModal = useAppSelector(selectProductModal)
+
   const dispatch = useAppDispatch()
-  const [value, setValue] = React.useState<null | string>('first')
+  const [option, setOption] = React.useState<null | string>('first')
   React.useEffect(() => {
     if (!productForModal?.hasVariants) {
-      setValue(null)
+      setOption(null)
     } else {
-      setValue('first')
+      setOption('first')
     }
   }, [productForModal])
 
   const handleClose = () => {
-    dispatch(categoriesActions.setIsOpenModal({ isOpenModal: false, productModalId: null }))
+    dispatch(categoriesActions.setIsOpenModal({ isOpenModal: false, product: null }))
   }
 
   return (
-    <section style={{ backgroundColor: 'red' }}>
+    productForModal && (
       <Dialog
         fullWidth
         maxWidth='md'
@@ -57,7 +57,7 @@ export const ProductModal = () => {
               padding: '20px',
             }}
           >
-            <img src={productForModal?.img} alt={productForModal?.title} style={{ width: '100%' }} />
+            <img src={productForModal.img} alt={productForModal.title} style={{ width: '100%' }} />
           </Box>
           <Box
             sx={{
@@ -71,24 +71,24 @@ export const ProductModal = () => {
           >
             <section className={styles.productModal}>
               <ProductLayout
-                id={productForModal?.id || null}
+                id={productForModal.id}
                 renderTitle={() => (
                   <header>
-                    <h4 className={styles.productModal__title}>{productForModal?.title}</h4>
+                    <h4 className={styles.productModal__title}>{productForModal.title}</h4>
                   </header>
                 )}
                 renderDescription={() => (
                   <div className={styles.productModal__description}>
-                    <div>{productForModal?.description}</div>
+                    <div>{productForModal.description}</div>
                   </div>
                 )}
                 renderToggleButtons={() =>
-                  (productForModal?.hasVariants && (
+                  (productForModal.hasVariants && (
                     <div className={styles.productModal__toggleButtons}>
                       <div className={styles.productModal__size}>
                         {productForModal.slug === 'pizza' ? 'Размер' : 'Объем'}
                       </div>
-                      <ProductModalButtonGroupes value={value!} setValue={setValue} slug={productForModal?.slug} />
+                      <ProductModalButtonGroupes option={option!} setOption={setOption} slug={productForModal.slug} />
                     </div>
                   )) ||
                   null
@@ -96,13 +96,15 @@ export const ProductModal = () => {
                 renderPrice={() =>
                   (
                     <div className={styles.productModal__price}>
-                      {productForModal?.price ? (
+                      {productForModal.price ? (
                         <span>{priceToLocale(productForModal.price)}</span>
                       ) : (
-                        productForModal?.variants && (
+                        productForModal.variants && (
                           <span>
                             {priceToLocale(
-                              value === 'first' ? productForModal.variants[0].price : productForModal.variants[1].price,
+                              option === 'first'
+                                ? productForModal.variants[0].price
+                                : productForModal.variants[1].price,
                             )}
                           </span>
                         )
@@ -113,37 +115,35 @@ export const ProductModal = () => {
                 renderWeight={() =>
                   (
                     <span className={styles.productModal__weight}>
-                      {productForModal?.weight ? (
+                      {productForModal.weight ? (
                         <span>{productForModal.weight}</span>
                       ) : (
-                        productForModal?.variants && (
+                        productForModal.variants && (
                           <span>
-                            {value === 'first'
+                            {option === 'first'
                               ? productForModal.variants[0].weight
                               : productForModal.variants[1].weight}
                           </span>
                         )
                       )}
-                      <span>{productForModal?.weightUnit === 'grams' ? ' гр.' : ' л.'}</span>
+                      <span>{productForModal.weightUnit === 'grams' ? ' гр.' : ' л.'}</span>
                     </span>
                   ) || null
                 }
                 renderQuantity={() =>
-                  (productForModal?.quantity && (
-                    <span className={styles.productModal__quantity}>{productForModal?.quantity} шт.</span>
+                  (productForModal.quantity && (
+                    <span className={styles.productModal__quantity}>{productForModal.quantity} шт.</span>
                   )) ||
                   null
                 }
-                renderButton={(_, addProductToCartFromModal) =>
-                  (
-                    <CustomButton
-                      title='Хочу'
-                      onClick={addProductToCartFromModal(productForModal?.id as number, value as string)}
-                      disabled={!isOpenModal}
-                      minWidth='50%'
-                    />
-                  ) || null
-                }
+                renderButton={(_, addProductToCartFromModal) => (
+                  <CustomButton
+                    title='Хочу'
+                    onClick={() => addProductToCartFromModal(productForModal, option)}
+                    disabled={!isOpenModal}
+                    minWidth='50%'
+                  />
+                )}
                 renderFooter={(price, weight, quantity, button) => (
                   <footer className={styles.productModal__footer}>
                     <section className={styles.productModal__variants}>
@@ -172,6 +172,6 @@ export const ProductModal = () => {
           </IconButton>
         </Toolbar>
       </Dialog>
-    </section>
+    )
   )
 }

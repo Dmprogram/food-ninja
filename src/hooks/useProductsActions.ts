@@ -1,53 +1,29 @@
 import { useCallback } from 'react'
 
-import { useAppDispatch, useAppSelector } from './useReduxHooks'
+import { useAppDispatch } from './useReduxHooks'
 
 import { cartActions } from '@/redux/features/cartSlice/cartSlice'
-import { selectCartProducts } from '@/redux/features/cartSlice/selector'
 import { categoriesActions } from '@/redux/features/categoriesSlice/categoriesSlice'
-import { selectCategories } from '@/redux/features/categoriesSlice/selector'
-import { addProductToCartHelper } from '@/utils/addProductToCartHelper'
-import { deleteOneProductFromCartHelper } from '@/utils/deleteOneProductFromCartHelper'
-import { deleteteProductFromCartHelper } from '@/utils/deleteteProductFromCartHelper'
+import { TCommonProduct } from '@/redux/features/categoriesSlice/types'
 
 export const useProductsActions = () => {
-  const categories = useAppSelector(selectCategories)
-
-  const cartProducts = useAppSelector(selectCartProducts)
-
   const dispatch = useAppDispatch()
+  const addProductToCart = useCallback((product: TCommonProduct) => {
+    dispatch(cartActions.addProductToCart({ product, option: null }))
+  }, [])
+  const addProductToCartFromModal = useCallback((product: TCommonProduct, option: string | null) => {
+    dispatch(categoriesActions.setIsOpenModal({ isOpenModal: false, product: null }))
+    dispatch(cartActions.addProductToCart({ product, option }))
+  }, [])
 
-  const addProductToCart = useCallback(
-    (id: number) => () => {
-      dispatch(cartActions.addProductToCart(addProductToCartHelper(categories, cartProducts, id, null)))
-    },
-    [cartProducts],
-  )
-  const addProductToCartFromModal = useCallback(
-    (id: number, value: string | null) => () => {
-      dispatch(categoriesActions.setIsOpenModal({ isOpenModal: false, productModalId: null }))
-      dispatch(cartActions.addProductToCart(addProductToCartHelper(categories, cartProducts, id, value)))
-    },
-    [],
-  )
-
-  const openModalProduct = useCallback(
-    (id: number) => () => {
-      dispatch(categoriesActions.setIsOpenModal({ isOpenModal: true, productModalId: id }))
-    },
-    [],
-  )
-  const deleteOneProduct = useCallback(
-    (id: number) => () => {
-      dispatch(cartActions.deleteOneProductFromCart(deleteOneProductFromCartHelper(cartProducts, id)))
-    },
-    [cartProducts],
-  )
-  const deleteProduct = useCallback(
-    (id: number) => () => {
-      dispatch(cartActions.deleteProductFromCart(deleteteProductFromCartHelper(cartProducts, id)))
-    },
-    [cartProducts],
-  )
+  const openModalProduct = useCallback((product: TCommonProduct) => {
+    dispatch(categoriesActions.setIsOpenModal({ product, isOpenModal: true }))
+  }, [])
+  const deleteOneProduct = useCallback((id: number) => {
+    dispatch(cartActions.deleteOneProductFromCart(id))
+  }, [])
+  const deleteProduct = useCallback((id: number) => {
+    dispatch(cartActions.deleteProductFromCart(id))
+  }, [])
   return { addProductToCart, addProductToCartFromModal, openModalProduct, deleteOneProduct, deleteProduct }
 }

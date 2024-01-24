@@ -1,8 +1,7 @@
-import { PayloadAction, createSlice, current } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 import { fetchCategories } from '@/redux/features/categoriesSlice/categoriesActions'
-import { TCategoriesState } from '@/redux/features/categoriesSlice/types'
-import { findProductForModal } from '@/utils/findProductForModal'
+import { TCategoriesState, TCommonProduct } from '@/redux/features/categoriesSlice/types'
 
 const initialState: TCategoriesState = {
   loading: 'idle',
@@ -16,12 +15,9 @@ export const categoriesSlice = createSlice({
   initialState,
   reducers: {
     resetState: () => initialState,
-    setIsOpenModal: (state, action: PayloadAction<{ isOpenModal: boolean; productModalId: number | null }>) => {
+    setIsOpenModal: (state, action: PayloadAction<{ product: TCommonProduct | null; isOpenModal: boolean }>) => {
       state.isOpenModal = action.payload.isOpenModal
-      const { productModalId } = action.payload
-      if (productModalId && state.categories) {
-        state.productForModal = findProductForModal(productModalId, current(state.categories))
-      }
+      state.productForModal = action.payload.product
     },
   },
   extraReducers: (builder) => {

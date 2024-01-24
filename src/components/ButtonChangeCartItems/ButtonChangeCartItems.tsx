@@ -3,17 +3,15 @@ import Button from '@mui/material/Button'
 import { useProductsActions } from '@/hooks/useProductsActions'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { selectCartProductById } from '@/redux/features/cartSlice/selector'
+import { TCommonProduct } from '@/redux/features/categoriesSlice/types'
 
-type TButtonChangeCartItems = {
-  id: number
-}
-export const ButtonChangeCartItems = ({ id }: TButtonChangeCartItems) => {
+export const ButtonChangeCartItems = (product: TCommonProduct) => {
   const { addProductToCart, deleteOneProduct } = useProductsActions()
-  const product = useAppSelector(selectCartProductById(id))
+  const { quantityInCart } = useAppSelector(selectCartProductById(product.id))
   return (
     <div style={{ borderRadius: '20px', backgroundColor: 'rgb(243, 243, 247)', height: '40px', width: '114px' }}>
       <Button
-        onClick={deleteOneProduct(id)}
+        onClick={() => deleteOneProduct(product.id)}
         variant='text'
         sx={{
           color: '#999',
@@ -33,9 +31,9 @@ export const ButtonChangeCartItems = ({ id }: TButtonChangeCartItems) => {
       >
         -
       </Button>
-      <span style={{ width: '34px', display: 'inline-block', textAlign: 'center' }}>{product?.quantityInCart}</span>
+      <span style={{ width: '34px', display: 'inline-block', textAlign: 'center' }}>{quantityInCart}</span>
       <Button
-        onClick={addProductToCart(id)}
+        onClick={() => addProductToCart(product)}
         variant='text'
         sx={{
           color: '#999',

@@ -22,7 +22,6 @@ export const CartItemLayout = ({
 }: TCartItemLayout) => {
   const isAdded = !!useAppSelector(selectCartProductById(id))
   const { addProductToCart, addProductToCartFromModal, openModalProduct, deleteProduct } = useProductsActions()
-
   return (
     <>
       {renderImage?.()}

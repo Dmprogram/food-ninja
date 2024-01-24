@@ -1,23 +1,19 @@
 import { changeProductProperties } from './changeProductProperties'
-import { findProduct } from './findProduct'
 
-import { TCategoriesArray, TCommonProduct } from '@/redux/features/categoriesSlice/types'
+import { TCommonProduct } from '@/redux/features/categoriesSlice/types'
 
 export const addProductToCartHelper = (
-  allProducts: TCategoriesArray | null,
   cartProducts: TCommonProduct[],
-  productId: number,
-  value: string | null,
+  product: TCommonProduct,
+  option: string | null,
 ) => {
-  const cartProductsCopy = JSON.parse(JSON.stringify(cartProducts))
-  const product = findProduct(productId, allProducts)
-  const cartProduct = changeProductProperties(product, value)
-  const cartIndex = cartProducts?.findIndex((el) => el?.id === cartProduct!.id)
-  if (typeof cartIndex === 'number' && cartIndex !== -1 && cartProducts) {
-    cartProductsCopy[cartIndex].quantityInCart! += 1
-  } else if (product) {
+  const cartProduct = changeProductProperties(product, option)
+  const cartIndex = cartProducts?.findIndex((el) => el.id === cartProduct!.id)
+  if (cartIndex !== -1) {
+    cartProducts[cartIndex].quantityInCart! += 1
+  } else {
     cartProduct.quantityInCart = 1
-    cartProductsCopy?.push(cartProduct as TCommonProduct)
+    cartProducts.push(cartProduct)
   }
-  return cartProductsCopy
+  return cartProducts
 }
