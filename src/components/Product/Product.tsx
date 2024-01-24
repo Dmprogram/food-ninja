@@ -34,7 +34,7 @@ export const Product = (product: TCommonProduct) => (
           <span>
             {product.price
               ? priceToLocale(product.price)
-              : product.variants && `От${priceToLocale(product.variants[0].price)}`}
+              : product.variants && `От ${priceToLocale(product.variants[0].price)}`}
           </span>
         </div>
       )}
