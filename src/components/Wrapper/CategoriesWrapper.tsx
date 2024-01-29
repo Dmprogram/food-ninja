@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
-import styles from './CategoriesWrapper.module.css'
+import styles from './CategoriesWrapper.module.scss'
 
 import { ProductModal } from '@/components/ProductModal/ProductModal'
 
@@ -21,10 +21,10 @@ export const CategoriesWrapper = () => {
 
   if (loading === 'succeeded') {
     return (
-      <section className={styles.container}>
+      <main className={styles['main-content']}>
         <Outlet />
         {isOpenProductModal && <ProductModal isOpenProductModal={isOpenProductModal} />}
-      </section>
+      </main>
     )
   }
 }

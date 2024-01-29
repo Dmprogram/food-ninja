@@ -15,7 +15,7 @@ type TCustomButton = {
   height?: string
   disabled?: boolean
   setIsAdded?: (arg: boolean) => void
-  onClick: () => void
+  onClick?: () => void
 }
 export const CustomButton = ({
   title,

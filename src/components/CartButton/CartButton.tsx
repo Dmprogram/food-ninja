@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import styles from './CartButton.module.css'
+import styles from './CartButton.module.scss'
 
 import { useAppDispatch, useAppSelector } from '@/hooks/useReduxHooks'
 
@@ -23,9 +23,9 @@ export const CartButton = () => {
 
   const navigate = useNavigate()
   return (
-    <button type='button' className={styles.button} onClick={() => navigate('/cart')}>
-      <img className={styles.button__image} src={shoppingCart} alt='Корзина' />
-      <span className={styles.button__totalAmount}>{totalAmount && priceToLocale(totalAmount)}</span>
+    <button type='button' className={styles['cart-button']} onClick={() => navigate('/cart')}>
+      <img className={styles['cart-button__image']} src={shoppingCart} alt='Корзина' />
+      <span className={styles['cart-button__total-amount']}>{totalAmount && priceToLocale(totalAmount)}</span>
     </button>
   )
 }

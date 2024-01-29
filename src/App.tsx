@@ -1,10 +1,9 @@
-import './App.css'
 import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { CategoriesNavBar } from '@/components/CategoriesNavBar/CategoriesNavBar'
 
-import { NavigationBar } from '@/components/NavigationBar/NavigationBar'
+import { MenuNavBar } from '@/components/MenuNavBar/MenuNavBar'
 import { CategoriesWrapper } from '@/components/Wrapper/CategoriesWrapper'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { CartPage } from '@/pages/CartPage/CartPage'
@@ -23,8 +22,8 @@ export const App = () => {
   }, [])
 
   return (
-    <main className='container'>
-      <NavigationBar />
+    <>
+      <MenuNavBar />
       <CategoriesNavBar />
       <Routes>
         <Route element={<CategoriesWrapper />}>
@@ -37,6 +36,6 @@ export const App = () => {
         <Route path='/cart' element={<CartPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-    </main>
+    </>
   )
 }

@@ -1,5 +1,7 @@
 import Button from '@mui/material/Button'
 
+import styles from './ButtonChangeCartItems.module.scss'
+
 import { useProductsActions } from '@/hooks/useProductsActions'
 import { useAppSelector } from '@/hooks/useReduxHooks'
 import { selectCartProductById } from '@/redux/features/cartSlice/selector'
@@ -9,7 +11,7 @@ export const ButtonChangeCartItems = (product: TCommonProduct) => {
   const { addProductToCart, deleteOneProduct } = useProductsActions()
   const { quantityInCart } = useAppSelector(selectCartProductById(product.id))
   return (
-    <div style={{ borderRadius: '20px', backgroundColor: 'rgb(243, 243, 247)', height: '40px', width: '114px' }}>
+    <div className={styles['buttons-quantity']}>
       <Button
         onClick={() => deleteOneProduct(product.id)}
         variant='text'
@@ -31,7 +33,7 @@ export const ButtonChangeCartItems = (product: TCommonProduct) => {
       >
         -
       </Button>
-      <span style={{ width: '34px', display: 'inline-block', textAlign: 'center' }}>{quantityInCart}</span>
+      <span className={styles['buttons-quantity__text']}>{quantityInCart}</span>
       <Button
         onClick={() => addProductToCart(product)}
         variant='text'

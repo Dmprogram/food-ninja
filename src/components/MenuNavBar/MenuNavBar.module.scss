@@ -1,0 +1,25 @@
+.menu-nav {
+  display: flex;
+  column-gap: 18px;
+
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 24px;
+
+  font-size: 18px;
+
+  &__link_unactive {
+    color: #333;
+    text-decoration: none;
+
+    &:hover {
+      color: #ff5722;
+    }
+  }
+
+  &__link_active {
+    font-weight: 600;
+    color: #ff5722;
+    text-decoration: none;
+  }
+}

@@ -1,39 +1,45 @@
 import { NavLink } from 'react-router-dom'
 
-import styles from './CategoriesNavBar.module.css'
+import styles from './CategoriesNavBar.module.scss'
 
 import { CartButton } from '@/components/CartButton/CartButton'
 
 export const CategoriesNavBar = () => (
-  <div className={styles.container}>
-    <nav className={styles.navigationBar}>
+  <section className={styles.categories}>
+    <nav className={styles.categories__nav}>
       <NavLink
         to='/category-1'
-        className={({ isActive }) => (isActive ? styles.navigationBar_linkActive : styles.navigationBar_linkUnactive)}
+        className={({ isActive }) =>
+          isActive ? styles['categories__nav-link_active'] : styles['categories__nav-link_unactive']
+        }
       >
         <span>Роллы</span>
       </NavLink>
       <NavLink
         to='/category-2'
-        className={({ isActive }) => (isActive ? styles.navigationBar_linkActive : styles.navigationBar_linkUnactive)}
+        className={({ isActive }) =>
+          isActive ? styles['categories__nav-link_active'] : styles['categories__nav-link_unactive']
+        }
       >
         <span>Пицца</span>
       </NavLink>
       <NavLink
         to='/category-3'
-        className={({ isActive }) => (isActive ? styles.navigationBar_linkActive : styles.navigationBar_linkUnactive)}
+        className={({ isActive }) =>
+          isActive ? styles['categories__nav-link_active'] : styles['categories__nav-link_unactive']
+        }
       >
         <span>Сеты роллов</span>
       </NavLink>
       <NavLink
         to='/category-4'
-        className={({ isActive }) => (isActive ? styles.navigationBar_linkActive : styles.navigationBar_linkUnactive)}
+        className={({ isActive }) =>
+          isActive ? styles['categories__nav-link_active'] : styles['categories__nav-link_unactive']
+        }
       >
         <span>Напитки</span>
       </NavLink>
     </nav>
-    <div>
-      <CartButton />
-    </div>
-  </div>
+    <CartButton />
+  </section>
 )

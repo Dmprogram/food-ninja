@@ -1,7 +1,7 @@
-.container {
+.main-content {
   display: flex;
   justify-content: center;
-
+  flex-direction: column;
   width: 100%;
   max-width: 1200px;
   padding: 0 24px;

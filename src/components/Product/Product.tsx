@@ -1,4 +1,4 @@
-import styles from './Product.module.css'
+import styles from './Product.module.scss'
 
 import { ButtonChangeCartItems } from '@/components/ButtonChangeCartItems/ButtonChangeCartItems'
 import { CustomButton } from '@/components/CustomButton/CustomButton'
@@ -23,7 +23,7 @@ export const Product = (product: TCommonProduct) => (
         </div>
       )}
       renderDetailedDescription={(openModalProduct) => (
-        <div className={styles.product__detailedDescription}>
+        <div className={styles['product__detailed-description']}>
           <span role='button' onClick={() => openModalProduct(product)}>
             Подробнее
           </span>

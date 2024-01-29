@@ -1,4 +1,4 @@
-.button {
+.cart-button {
   cursor: pointer;
 
   display: flex;
@@ -11,20 +11,18 @@
   background-color: #ff5722;
   border: none;
   border-radius: 20px;
-}
 
-.button__image {
-  width: 24px;
-  height: 24px;
-}
+  &__image {
+    width: 24px;
+    height: 24px;
+  }
 
-.button__totalAmount {
-  font-size: 14px;
-  font-weight: 700;
-}
+  &__total-amount {
+    font-size: 14px;
+    font-weight: 700;
+  }
 
-@media screen and (width <= 420px) {
-  .button {
+  @media screen and (width <= 420px) {
     justify-content: space-between;
     min-width: 100px;
     margin-right: 10px;

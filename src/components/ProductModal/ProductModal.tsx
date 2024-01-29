@@ -4,7 +4,7 @@ import Dialog from '@mui/material/Dialog'
 import IconButton from '@mui/material/IconButton'
 import * as React from 'react'
 
-import styles from './ProductModal.module.css'
+import styles from './ProductModal.module.scss'
 
 import { CustomButton } from '@/components/CustomButton/CustomButton'
 import { ProductLayout } from '@/components/ProductLayout/ProductLayout'
@@ -69,23 +69,23 @@ export const ProductModal = ({ isOpenProductModal }: { isOpenProductModal: boole
               height: '100%',
             }}
           >
-            <section className={styles.productModal}>
+            <section className={styles['product-modal']}>
               <ProductLayout
                 id={productModal.id}
                 renderTitle={() => (
-                  <header>
-                    <h4 className={styles.productModal__title}>{productModal.title}</h4>
+                  <header className={styles['product-modal__title']}>
+                    <h4>{productModal.title}</h4>
                   </header>
                 )}
                 renderDescription={() => (
-                  <div className={styles.productModal__description}>
+                  <div className={styles['product-modal__description']}>
                     <div>{productModal.description}</div>
                   </div>
                 )}
                 renderToggleButtons={() =>
                   productModal.hasVariants ? (
-                    <div className={styles.productModal__toggleButtons}>
-                      <div className={styles.productModal__size}>
+                    <div className={styles['product-modal__toggle-buttons']}>
+                      <div className={styles['product-modal__size']}>
                         {productModal.slug === 'pizza' ? 'Размер' : 'Объем'}
                       </div>
                       <ProductModalButtonGroupes option={option!} setOption={setOption} slug={productModal.slug} />
@@ -93,7 +93,7 @@ export const ProductModal = ({ isOpenProductModal }: { isOpenProductModal: boole
                   ) : null
                 }
                 renderPrice={() => (
-                  <div className={styles.productModal__price}>
+                  <div className={styles['product-modal__price']}>
                     <span>
                       {productModal.price
                         ? priceToLocale(productModal.price)
@@ -105,7 +105,7 @@ export const ProductModal = ({ isOpenProductModal }: { isOpenProductModal: boole
                   </div>
                 )}
                 renderWeight={() => (
-                  <span className={styles.productModal__weight}>
+                  <span className={styles['product-modal__weight']}>
                     {productModal.weight
                       ? productModal.weight
                       : productModal.variants &&
@@ -115,7 +115,7 @@ export const ProductModal = ({ isOpenProductModal }: { isOpenProductModal: boole
                 )}
                 renderQuantity={() =>
                   productModal.quantity ? (
-                    <span className={styles.productModal__quantity}>{productModal.quantity} шт.</span>
+                    <span className={styles['product-modal__quantity']}>{productModal.quantity} шт.</span>
                   ) : null
                 }
                 renderButton={(_, addProductToCartFromModal) => (
@@ -127,8 +127,8 @@ export const ProductModal = ({ isOpenProductModal }: { isOpenProductModal: boole
                   />
                 )}
                 renderFooter={(price, weight, quantity, button) => (
-                  <footer className={styles.productModal__footer}>
-                    <section className={styles.productModal__variants}>
+                  <footer className={styles['product-modal__footer']}>
+                    <section className={styles['product-modal__variants']}>
                       <div>
                         {price}
                         {weight}

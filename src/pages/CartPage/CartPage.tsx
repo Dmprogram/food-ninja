@@ -1,7 +1,7 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import styles from './CartPage.module.css'
+import styles from './CartPage.module.scss'
 
 import { CartItem } from '@/components/CartItem/CartItem'
 import { CustomButton } from '@/components/CustomButton/CustomButton'
@@ -30,33 +30,33 @@ export const CartPage = () => {
 
   if (cartProducts.length === 0) {
     return (
-      <section className={styles.container}>
-        <header className={styles.emptyCartsContainer__header}>
-          <h1>Корзина</h1>
+      <section className={styles.cart}>
+        <header>
+          <h1 className={styles.cart__header}>Корзина</h1>
         </header>
-        <section className={styles.emptyCartsContainer}>
+        <div className={styles.cart__empty}>
           <img
             src='https://demo.foodninja.pro/static/media/empty-cart.d745a220.svg'
             alt='Кот'
-            style={{ maxWidth: '150px' }}
+            className={styles['cart__empty-image']}
           />
-          <div style={{ fontSize: '26px', fontWeight: 700, marginBottom: '8px' }}>Ой, пусто!</div>
-          <div style={{ fontSize: '16px', fontWeight: 500, marginBottom: '16px' }}>Добавьте товары в корзину.</div>
-          <Link to='/' className={styles.emptyCartsContainer__link}>
+          <h4 className={styles['cart__empty-header']}>Ой, пусто!</h4>
+          <div className={styles['cart__empty-text']}>Добавьте товары в корзину.</div>
+          <Link to='/' className={styles['cart__empty-link']}>
             Вернуться к меню
           </Link>
-        </section>
+        </div>
       </section>
     )
   }
   return (
-    <section className={styles.container}>
-      <header className={styles.container__header}>
+    <section className={styles.cart}>
+      <header className={styles.cart__header}>
         <h1>Корзина</h1>
       </header>
-      <section className={styles.cartsContainer}>
-        <header className={styles.cartsContainer__header}>
-          <h2>Ваш заказ</h2>
+      <section className={styles.cart__items}>
+        <header>
+          <h2 className={styles['cart__items-header']}>Ваш заказ</h2>
         </header>
         <div ref={parent}>
           {cartProducts.map((cartItem) => (
@@ -64,9 +64,9 @@ export const CartPage = () => {
           ))}
         </div>
       </section>
-      <div className={styles.totalPriceContainer}>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          Итого: <span className={styles.totalPriceContainer__totalPrice}>{priceToLocale(totalAmount as number)}</span>
+      <div className={styles.cart__finish}>
+        <div className={styles['cart__finish-price']}>
+          Итого: <span>{priceToLocale(totalAmount as number)}</span>
         </div>
         <CustomButton
           onClick={handleClick}

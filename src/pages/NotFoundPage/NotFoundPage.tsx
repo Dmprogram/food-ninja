@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom'
 
-import styles from './NotFound.module.css'
+import styles from './NotFound.module.scss'
+
+import { CustomButton } from '@/components/CustomButton/CustomButton'
 
 export const NotFoundPage = () => (
-  <h2 className={styles.notFound}>
-    К сожалению, данной страницы не существует
-    <Link to='/' className={styles.notFound__link}>
-      <button type='button' className={styles.notFound__button}>
-        Перейти на главную
-      </button>
+  <section className={styles['not-found']}>
+    <header>
+      <h2 className={styles['not-found__header']}>К сожалению, данной страницы не существует</h2>
+    </header>
+    <Link to='/' className={styles['not-found__link']}>
+      <CustomButton title='Перейти на главную' height='50px' />
     </Link>
-  </h2>
+  </section>
 )
