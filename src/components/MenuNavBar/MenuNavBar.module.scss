@@ -9,17 +9,17 @@
   font-size: 18px;
 
   &__link_unactive {
-    color: #333;
+    color: var(--color-menu-nav-link-unactive);
     text-decoration: none;
 
     &:hover {
-      color: #ff5722;
+      color: var(--color-menu-nav-link-hover);
     }
   }
 
   &__link_active {
     font-weight: 600;
-    color: #ff5722;
+    color: var(--color-menu-nav-link-active);
     text-decoration: none;
   }
 }

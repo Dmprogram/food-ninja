@@ -23,7 +23,7 @@ export const Product = (product: TCommonProduct) => (
         </div>
       )}
       renderDetailedDescription={(openModalProduct) => (
-        <div className={styles['product__detailed-description']}>
+        <div className={styles.product__details}>
           <span role='button' onClick={() => openModalProduct(product)}>
             Подробнее
           </span>

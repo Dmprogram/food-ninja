@@ -6,6 +6,10 @@
 
   &__header {
     padding-top: 16px;
+    width: 15%;
+    @media screen and (width <= 420px) {
+      width: 40%;
+    }
   }
   &__products {
     display: grid;
@@ -31,9 +35,7 @@
       }
     }
     @media screen and (width <= 420px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
+      grid-template-columns: 1fr;
     }
   }
 }

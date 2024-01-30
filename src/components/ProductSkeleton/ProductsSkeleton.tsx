@@ -9,7 +9,7 @@ export const ProductsSkeleton = () => {
   return (
     <section className={styles.skeletons}>
       <header className={styles.skeletons__header}>
-        <Skeleton width='15%' height={45} />
+        <Skeleton width='100%' height={45} />
       </header>
       <div className={styles.skeletons__products}>
         {productsQuantity.map((_, index) => (

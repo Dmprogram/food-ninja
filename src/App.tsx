@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { CategoriesNavBar } from '@/components/CategoriesNavBar/CategoriesNavBar'
@@ -21,6 +21,9 @@ export const App = () => {
     dispatch(fetchCategories())
   }, [])
 
+  useLayoutEffect(() => {
+    document.documentElement.setAttribute('data-theme', 'light')
+  }, [])
   return (
     <>
       <MenuNavBar />

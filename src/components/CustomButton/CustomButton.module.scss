@@ -1,0 +1,9 @@
+.custom-button {
+  background-color: var(--background-color-button);
+  color: var(--color-button);
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-hover-button);
+  }
+}

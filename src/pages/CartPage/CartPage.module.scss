@@ -29,12 +29,12 @@
     &-link {
       font-size: 16px;
       font-weight: 600;
-      color: #ff5722;
+      color: var(--color-link-empty-cart);
     }
   }
   &__items {
     width: 100%;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color-cart-item);
     &-header {
       font-size: 24px;
       font-weight: 700;
@@ -55,7 +55,7 @@
       display: flex;
       justify-content: space-between;
       span {
-        color: #ff5722;
+        color: var(--color-finish-price);
       }
     }
   }

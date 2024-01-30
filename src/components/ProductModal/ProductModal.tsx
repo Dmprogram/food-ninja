@@ -1,5 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close'
-import { Toolbar, Box } from '@mui/material'
+import { Toolbar } from '@mui/material'
 import Dialog from '@mui/material/Dialog'
 import IconButton from '@mui/material/IconButton'
 import * as React from 'react'
@@ -38,110 +38,82 @@ export const ProductModal = ({ isOpenProductModal }: { isOpenProductModal: boole
         maxWidth='md'
         open={isOpenProductModal}
         onClose={handleClose}
-        PaperProps={{ sx: { borderRadius: '20px', height: '595px' } }}
+        className={styles['product-modal']}
       >
-        <Box
-          sx={{
-            display: 'flex',
-            m: 'auto',
-            borderRadius: '30px',
-            height: '100%',
-            width: '100%',
-          }}
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              m: 'auto',
-              width: '50%',
-              padding: '20px',
-            }}
-          >
-            <img src={productModal.img} alt={productModal.title} style={{ width: '100%' }} />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: '50%',
-              padding: '25px 20px 10px',
-              backgroundColor: '#f2f3f5',
-              height: '100%',
-            }}
-          >
-            <section className={styles['product-modal']}>
-              <ProductLayout
-                id={productModal.id}
-                renderTitle={() => (
-                  <header className={styles['product-modal__title']}>
-                    <h4>{productModal.title}</h4>
-                  </header>
-                )}
-                renderDescription={() => (
-                  <div className={styles['product-modal__description']}>
-                    <div>{productModal.description}</div>
+        <div className={styles['product-modal__image']}>
+          <img src={productModal.img} alt={productModal.title} />
+        </div>
+        <section className={styles['product-modal__info']}>
+          <ProductLayout
+            id={productModal.id}
+            renderTitle={() => (
+              <header className={styles['product-modal__info-title']}>
+                <h4>{productModal.title}</h4>
+              </header>
+            )}
+            renderDescription={() => (
+              <div className={styles['product-modal__info-description']}>
+                <div>{productModal.description}</div>
+              </div>
+            )}
+            renderToggleButtons={() =>
+              productModal.hasVariants ? (
+                <div className={styles['product-modal__info-choose']}>
+                  <div className={styles['product-modal__info-choose-size']}>
+                    {productModal.slug === 'pizza' ? 'Размер' : 'Объем'}
                   </div>
-                )}
-                renderToggleButtons={() =>
-                  productModal.hasVariants ? (
-                    <div className={styles['product-modal__toggle-buttons']}>
-                      <div className={styles['product-modal__size']}>
-                        {productModal.slug === 'pizza' ? 'Размер' : 'Объем'}
-                      </div>
-                      <ProductModalButtonGroupes option={option!} setOption={setOption} slug={productModal.slug} />
-                    </div>
-                  ) : null
-                }
-                renderPrice={() => (
-                  <div className={styles['product-modal__price']}>
-                    <span>
-                      {productModal.price
-                        ? priceToLocale(productModal.price)
-                        : productModal.variants &&
-                          priceToLocale(
-                            option === 'first' ? productModal.variants[0].price : productModal.variants[1].price,
-                          )}
-                    </span>
-                  </div>
-                )}
-                renderWeight={() => (
-                  <span className={styles['product-modal__weight']}>
-                    {productModal.weight
-                      ? productModal.weight
-                      : productModal.variants &&
-                        (option === 'first' ? productModal.variants[0].weight : productModal.variants[1].weight)}
-                    {productModal.weightUnit === 'grams' ? ' гр.' : ' л.'}
-                  </span>
-                )}
-                renderQuantity={() =>
-                  productModal.quantity ? (
-                    <span className={styles['product-modal__quantity']}>{productModal.quantity} шт.</span>
-                  ) : null
-                }
-                renderButton={(_, addProductToCartFromModal) => (
-                  <CustomButton
-                    title='Хочу'
-                    onClick={() => addProductToCartFromModal(productModal, option)}
-                    disabled={!isOpenProductModal}
-                    minWidth='50%'
-                  />
-                )}
-                renderFooter={(price, weight, quantity, button) => (
-                  <footer className={styles['product-modal__footer']}>
-                    <section className={styles['product-modal__variants']}>
-                      <div>
-                        {price}
-                        {weight}
-                        {quantity}
-                      </div>
-                      {button}
-                    </section>
-                  </footer>
-                )}
+                  <ProductModalButtonGroupes option={option!} setOption={setOption} slug={productModal.slug} />
+                </div>
+              ) : null
+            }
+            renderPrice={() => (
+              <div className={styles['product-modal__info-price']}>
+                <span>
+                  {productModal.price
+                    ? priceToLocale(productModal.price)
+                    : productModal.variants &&
+                      priceToLocale(
+                        option === 'first' ? productModal.variants[0].price : productModal.variants[1].price,
+                      )}
+                </span>
+              </div>
+            )}
+            renderWeight={() => (
+              <span className={styles['product-modal__info-weight']}>
+                {productModal.weight
+                  ? productModal.weight
+                  : productModal.variants &&
+                    (option === 'first' ? productModal.variants[0].weight : productModal.variants[1].weight)}
+                {productModal.weightUnit === 'grams' ? ' гр.' : ' л.'}
+              </span>
+            )}
+            renderQuantity={() =>
+              productModal.quantity ? (
+                <span className={styles['product-modal__info-quantity']}>{productModal.quantity} шт.</span>
+              ) : null
+            }
+            renderButton={(_, addProductToCartFromModal) => (
+              <CustomButton
+                title='Хочу'
+                onClick={() => addProductToCartFromModal(productModal, option)}
+                disabled={!isOpenProductModal}
+                minWidth='50%'
               />
-            </section>
-          </Box>
-        </Box>
+            )}
+            renderFooter={(price, weight, quantity, button) => (
+              <footer className={styles['product-modal__info-footer']}>
+                <section className={styles['product-modal__info-variants-buy']}>
+                  <div>
+                    {price}
+                    {weight}
+                    {quantity}
+                  </div>
+                  {button}
+                </section>
+              </footer>
+            )}
+          />
+        </section>
         <Toolbar
           sx={{
             position: 'absolute',

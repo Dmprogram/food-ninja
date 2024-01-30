@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import styles from './CustomButton.module.scss'
 
 type TCustomButton = {
   title: string
@@ -19,7 +19,6 @@ type TCustomButton = {
 }
 export const CustomButton = ({
   title,
-  backgroundColor = '#ff5722',
   borderRadius = '20px',
   padding = '6px 20px',
   fontWeight = '500',
@@ -31,36 +30,24 @@ export const CustomButton = ({
   height = 'fit-content',
   disabled = false,
   onClick,
-}: TCustomButton) => {
-  const [isHover, setIsHover] = useState(false)
-  const handleMouseEnter = () => {
-    setIsHover(true)
-  }
-  const handleMouseLeave = () => {
-    setIsHover(false)
-  }
-  return (
-    <button
-      type='button'
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        backgroundColor: isHover ? '#e34b1c' : backgroundColor,
-        transition: 'background-color 0.2s ease-in-out',
-        borderRadius,
-        padding,
-        fontWeight,
-        border,
-        fontSize,
-        minWidth,
-        lineHeight,
-        cursor,
-        height,
-      }}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {title}
-    </button>
-  )
-}
+}: TCustomButton) => (
+  <button
+    type='button'
+    className={styles['custom-button']}
+    style={{
+      borderRadius,
+      padding,
+      fontWeight,
+      border,
+      fontSize,
+      minWidth,
+      lineHeight,
+      cursor,
+      height,
+    }}
+    disabled={disabled}
+    onClick={onClick}
+  >
+    {title}
+  </button>
+)

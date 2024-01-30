@@ -30,11 +30,15 @@ export const CartItem = (cartItem: TCommonProduct) => (
         ) : null
       }
       renderWeight={() => (
-        <div className={styles['cart-item__weight']}>
-          {cartItem.weightUnit === 'litres' && 'Объем: '}
-          {cartItem.weight} {(cartItem.weightUnit === 'grams' && 'гр.') || (cartItem.weightUnit === 'litres' && 'л.')}
-          {cartItem.quantity}
-          {cartItem.quantity && ' шт.'}
+        <div>
+          <span className={styles['cart-item__weight']}>
+            {cartItem.weightUnit === 'litres' && 'Объем: '}
+            {cartItem.weight} {(cartItem.weightUnit === 'grams' && 'гр.') || (cartItem.weightUnit === 'litres' && 'л.')}
+          </span>
+          <span className={styles['cart-item__quantity']}>
+            {cartItem.quantity}
+            {cartItem.quantity && ' шт.'}
+          </span>
         </div>
       )}
       renderButton={(_, __, ___, isAdded) => (isAdded ? <ButtonChangeCartItems {...cartItem} /> : null)}

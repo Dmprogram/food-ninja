@@ -2,6 +2,8 @@ import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import * as React from 'react'
 
+import styles from './ProductModalButtonGroupes.module.scss'
+
 type TProductModalButtonGroup = {
   slug: string
   option: string
@@ -15,61 +17,19 @@ export const ProductModalButtonGroupes = ({ slug, option, setOption }: TProductM
     setOption(newValue)
   }
   return (
-    <div style={{ padding: '3px', backgroundColor: '#DEE2E6', borderRadius: '20px' }}>
-      <ToggleButtonGroup value={option} exclusive onChange={handleChange} aria-label='Platform' sx={{ width: '100%' }}>
-        <ToggleButton
-          sx={{
-            '&.MuiToggleButtonGroup-grouped': {
-              width: '50%',
-              padding: '2px',
-              border: 'none',
-
-              fontSize: '14px',
-              textTransform: 'lowercase',
-              fontWeight: '600',
-            },
-            '&.Mui-selected': {
-              borderRadius: '20px',
-              backgroundColor: 'white',
-            },
-            '&.Mui-selected:hover': {
-              backgroundColor: 'white',
-            },
-            ':hover': {
-              backgroundColor: 'inherit',
-            },
-          }}
-          value='first'
-        >
-          <span>{(slug === 'pizza' && '25 см') || (slug === 'drinks' && '0.5 литра')}</span>
-        </ToggleButton>
-        <ToggleButton
-          sx={{
-            '&.MuiToggleButtonGroup-grouped': {
-              border: 'none',
-              padding: '2px',
-              fontSize: '14px',
-              textTransform: 'lowercase',
-              fontWeight: '600',
-
-              width: '50%',
-            },
-            '&.Mui-selected': {
-              borderRadius: '20px',
-              backgroundColor: 'white',
-            },
-            '&.Mui-selected:hover': {
-              backgroundColor: 'white',
-            },
-            ':hover': {
-              backgroundColor: 'inherit',
-            },
-          }}
-          value='second'
-        >
-          <span>{(slug === 'pizza' && '30 см') || (slug === 'drinks' && '1 литр')}</span>
-        </ToggleButton>
-      </ToggleButtonGroup>
-    </div>
+    <ToggleButtonGroup
+      value={option}
+      exclusive
+      onChange={handleChange}
+      aria-label='Platform'
+      className={styles['product-modal__toggle-buttons']}
+    >
+      <ToggleButton className={styles['product-modal__toggle-button']} value='first' data-option={option}>
+        <span>{(slug === 'pizza' && '25 см') || (slug === 'drinks' && '0.5 литра')}</span>
+      </ToggleButton>
+      <ToggleButton className={styles['product-modal__toggle-button']} value='second' data-option={option}>
+        <span>{(slug === 'pizza' && '30 см') || (slug === 'drinks' && '1 литр')}</span>
+      </ToggleButton>
+    </ToggleButtonGroup>
   )
 }

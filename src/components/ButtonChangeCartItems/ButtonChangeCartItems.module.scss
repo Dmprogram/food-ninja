@@ -1,10 +1,37 @@
-.buttons-quantity {
+.quantity {
   min-width: 114px;
   height: 40px;
-
+  background-color: var(--background-color-quantity);
+  border-radius: 20px;
   &__text {
     display: inline-block;
     width: 34px;
     text-align: center;
+  }
+  &__button_decrease:global(.MuiButtonBase-root) {
+    color: var(--color-quantity-button);
+    height: 40px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    min-width: 40px;
+    &:hover {
+      background-color: var(--background-color-hover-quantity-button);
+      color: var(--color-quantity-hover-button);
+    }
+  }
+  &__button_increase:global(.MuiButtonBase-root) {
+    color: var(--color-quantity-button);
+    height: 40px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    min-width: 40px;
+    &:hover {
+      color: var(--color-quantity-hover-button);
+      background-color: var(--background-color-hover-quantity-button);
+    }
   }
 }

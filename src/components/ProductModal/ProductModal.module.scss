@@ -1,60 +1,76 @@
-.product-modal {
+.product-modal :global(.MuiPaper-root) {
+  border-radius: 20px;
+  height: 595px;
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  &__title {
-    margin-bottom: 20px;
-    h4 {
-      font-size: 18px;
-      font-weight: 700;
+  flex-direction: row;
+  .product-modal__image {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    img {
+      width: 100%;
     }
   }
-  &__description {
-    font-size: 14px;
-    font-weight: 500;
-    color: #666;
-    word-break: normal;
-  }
-  &__toggle-buttons {
-    margin-top: 15px;
-  }
-  &__size {
-    margin-bottom: 5px;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  &__footer {
+  .product-modal__info {
+    width: 50%;
     display: flex;
-    flex-grow: 1;
-    align-items: flex-end;
-    margin: 0 -20px -10px;
-  }
-  &__price {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-  &__weight {
-    font-size: 14px;
-    font-weight: 500;
-    color: #aaa;
-  }
-  &__quantity {
-    margin-left: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #aaa;
-  }
-  &__variants {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    background-color: var(--background-color-product-modal-info);
+    padding: 25px 20px 10px;
+    &-title {
+      margin-bottom: 20px;
+      h4 {
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+    &-description {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-product-description);
+      word-break: normal;
+    }
+    &-choose {
+      margin-top: 15px;
+      &-size {
+        margin-bottom: 5px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
 
-    width: 100%;
-    padding: 15px 15px 15px 20px;
+    &-footer {
+      display: flex;
+      flex-grow: 1;
+      align-items: flex-end;
+      margin: 0 -20px -10px;
+    }
+    &-price {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+    &-weight {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-product-weight);
+    }
+    &-quantity {
+      margin-left: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-product-quantity);
+    }
+    &-variants-buy {
+      display: flex;
+      justify-content: space-between;
 
-    background-color: #f2f3f5;
-    border-radius: 0;
-    box-shadow: 0 0 8px rgb(6 5 50/12%);
+      width: 100%;
+      padding: 15px 15px 15px 20px;
+      border-radius: 0;
+      box-shadow: 0 0 8px rgb(6 5 50/12%);
+    }
   }
 }

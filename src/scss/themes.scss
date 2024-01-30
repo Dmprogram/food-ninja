@@ -1,0 +1,57 @@
+@use 'colors' as *;
+
+html[data-theme='dark'] {
+  // --background-color: #{$neutral-900};
+  // --color: #{$neutral-0};
+
+  // --primary-color: #{$primary-500};
+  // --secondary-color: #{$neutral-500};
+
+  // --card-background-color: #{$dark-overlay-8};
+  // --card-border-color: #{$neutral-700};
+}
+
+html[data-theme='light'] {
+  --background-color: #{$white-1};
+  --color: #{$black-1};
+
+  --background-color-categories-nav: #{$black-1};
+  --color-categories-nav-active: #{$white-2};
+  --color-categories-nav-unactive: #{$grey-1};
+  --border-bottom-color-categories-nav-unactive: #{$grey-2};
+  --box-shadow-color-categories-nav-unactive-hover: #{$grey-3};
+  --box-shadow-color-categories-nav-active: #{$white-3};
+
+  --color-button: #{$white-1};
+  --background-color-button: #{$orange-1};
+  --color-hover-button: #{$orange-2};
+
+  --background-color-quantity: #{$white-3};
+  --background-color-hover-quantity-button: #{$orange-1};
+  --color-quantity-button: #{$grey-4};
+  --color-quantity-hover-button: #{$white-1};
+
+  --border-color-cart-item: #{$white-4};
+  --color-cart-item-size: #{$grey-5};
+  --color-cart-item-weight: #{$grey-6};
+  --color-cart-item-quantity: #{$grey-6};
+  --color-finish-price: #{$orange-1};
+  --color-link-empty-cart: #{$orange-1};
+
+  --color-menu-nav-link-active: #{$orange-1};
+  --color-menu-nav-link-hover: #{$orange-1};
+  --color-menu-nav-link-unactive: #{$black-2};
+
+  --background-color-product-hover: #{$grey-7};
+  --color-product-description: #{$grey-8};
+  --background-color-product-blur: #{$white-1};
+  --color-details: #{$orange-1};
+  --color-product-weight: #{$grey-6};
+  --color-product-quantity: #{$grey-6};
+
+  --background-color-product-modal-info: #{$white-5};
+  --background-color-product-modal-info-toggle-buttons: #{$white-6};
+  --background-color-product-modal-info-toggle-button: #{$white-1};
+
+  --color-spinner: #{$yellow-1};
+}
