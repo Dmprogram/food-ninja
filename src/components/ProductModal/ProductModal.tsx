@@ -14,7 +14,10 @@ import { productModalActions } from '@/redux/features/productModalSlice/productM
 import { selectProductModal } from '@/redux/features/productModalSlice/selector'
 import { priceToLocale } from '@/utils/priceToLocale'
 
-export const ProductModal = ({ isOpenProductModal }: { isOpenProductModal: boolean }) => {
+type TProductModal = {
+  isOpenProductModal: boolean
+}
+export const ProductModal = ({ isOpenProductModal }: TProductModal) => {
   const productModal = useAppSelector(selectProductModal)
 
   const dispatch = useAppDispatch()
@@ -114,13 +117,7 @@ export const ProductModal = ({ isOpenProductModal }: { isOpenProductModal: boole
             )}
           />
         </section>
-        <Toolbar
-          sx={{
-            position: 'absolute',
-            right: 0,
-            overflow: 'visible',
-          }}
-        >
+        <Toolbar className={styles['product-modal__close-icon']}>
           <IconButton edge='end' color='inherit' onClick={handleClose} aria-label='close'>
             <CloseIcon />
           </IconButton>

@@ -1,0 +1,23 @@
+.switch-theme {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  &__switcher :global(.MuiSwitch-switchBase) {
+    color: var(--color-switcher-checked);
+  }
+  &__switcher :global(.MuiSwitch-switchBase + .MuiSwitch-track) {
+    background-color: var(--background-color-switcher-checked);
+  }
+  &__switcher :global(.MuiSwitch-switchBase.Mui-checked) {
+    color: var(--color-switcher-checked);
+  }
+  &__switcher :global(.MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track) {
+    background-color: var(--background-color-switcher-checked);
+  }
+
+  &__black {
+    &_hidden {
+      visibility: hidden;
+    }
+  }
+}

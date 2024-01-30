@@ -7,13 +7,16 @@ import { App } from './App'
 
 import './index.scss'
 
+import { ThemeProvider } from './contexts/ThemeContext/ThemeContext'
 import { store } from './redux/store'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

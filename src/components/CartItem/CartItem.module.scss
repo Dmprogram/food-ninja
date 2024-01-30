@@ -11,13 +11,14 @@
 
   &__image {
     max-width: 70px;
-    max-height: 70px;
+    height: 70px;
+    border-radius: 8px;
   }
 
   &__main-information {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     margin-left: 20px;
   }
 
@@ -43,8 +44,12 @@
   }
 
   &__price {
+    min-width: 15%;
     margin-left: 20px;
     font-size: 16px;
     font-weight: 700;
+  }
+  &__delete-icon:global(.MuiToolbar-root) {
+    padding: 0;
   }
 }

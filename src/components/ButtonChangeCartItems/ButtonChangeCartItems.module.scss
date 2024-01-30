@@ -7,6 +7,8 @@
     display: inline-block;
     width: 34px;
     text-align: center;
+    font-weight: 700;
+    color: var(--color-quantity-text);
   }
   &__button_decrease:global(.MuiButtonBase-root) {
     color: var(--color-quantity-button);

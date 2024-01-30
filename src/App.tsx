@@ -1,10 +1,11 @@
-import { useEffect, useLayoutEffect } from 'react'
+import { useContext, useEffect, useLayoutEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { CategoriesNavBar } from '@/components/CategoriesNavBar/CategoriesNavBar'
 
 import { MenuNavBar } from '@/components/MenuNavBar/MenuNavBar'
 import { CategoriesWrapper } from '@/components/Wrapper/CategoriesWrapper'
+import { ThemeContext } from '@/contexts/ThemeContext/ThemeContext'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { CartPage } from '@/pages/CartPage/CartPage'
 import { Category1 } from '@/pages/Category1/Category1'
@@ -17,16 +18,19 @@ import { fetchCategories } from '@/redux/features/categoriesSlice/categoriesActi
 
 export const App = () => {
   const dispatch = useAppDispatch()
+
+  const { darkTheme, toggleTheme } = useContext(ThemeContext)
   useEffect(() => {
     dispatch(fetchCategories())
   }, [])
 
   useLayoutEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'light')
-  }, [])
+    document.documentElement.setAttribute('data-theme', darkTheme ? 'dark' : 'light')
+  }, [darkTheme])
+
   return (
     <>
-      <MenuNavBar />
+      <MenuNavBar darkTheme={darkTheme} toggleTheme={toggleTheme} />
       <CategoriesNavBar />
       <Routes>
         <Route element={<CategoriesWrapper />}>

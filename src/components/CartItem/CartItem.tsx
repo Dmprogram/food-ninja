@@ -46,19 +46,8 @@ export const CartItem = (cartItem: TCommonProduct) => (
         <div className={styles['cart-item__price']}>{priceToLocale(cartItem.price! * cartItem.quantityInCart!)}</div>
       )}
       renderDeleteProduct={(deleteProduct) => (
-        <Toolbar
-          sx={{
-            position: 'absolute',
-            right: 5,
-          }}
-        >
-          <IconButton
-            edge='end'
-            color='inherit'
-            aria-label='close'
-            onClick={() => deleteProduct(cartItem.id)}
-            sx={{ position: 'absolute' }}
-          >
+        <Toolbar className={styles['cart-item__delete-icon']}>
+          <IconButton edge='end' color='inherit' aria-label='close' onClick={() => deleteProduct(cartItem.id)}>
             <CloseIcon />
           </IconButton>
         </Toolbar>

@@ -6,6 +6,7 @@
   .product-modal__toggle-button:global(.MuiButtonBase-root) {
     width: 50%;
     font-weight: 600;
+    color: var(--color-product-modal-info-toggle-button);
     border: none;
     font-size: 14px;
     padding: 2px;
@@ -16,9 +17,9 @@
     }
   }
   .product-modal__toggle-button:global(.Mui-selected) {
-    background-color: var(--background-color-product-modal-info-toggle-button);
+    background-color: var(--background-color-product-modal-info-toggle-button-active);
     &:hover {
-      background-color: var(--background-color-product-modal-info-toggle-button);
+      background-color: var(--background-color-product-modal-info-toggle-button-active);
     }
   }
 }

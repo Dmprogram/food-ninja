@@ -10,7 +10,11 @@ export const Product = (product: TCommonProduct) => (
   <section className={styles.product}>
     <ProductLayout
       id={product.id}
-      renderImage={() => <img src={product.img} alt={product.title} className={styles.product__image} />}
+      renderImage={() => (
+        <div className={styles.product__image}>
+          <img src={product.img} alt={product.title} />
+        </div>
+      )}
       renderTitle={() => (
         <header>
           <h4 className={styles.product__title}>{product.title}</h4>

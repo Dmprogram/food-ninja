@@ -1,25 +1,29 @@
-.menu-nav {
+.menu {
   display: flex;
-  column-gap: 18px;
-
-  width: 100%;
-  margin-top: 20px;
+  justify-content: space-between;
   padding: 0 24px;
+  margin-top: 20px;
+  width: 100%;
+  align-items: center;
+  .menu-nav {
+    display: flex;
+    column-gap: 18px;
 
-  font-size: 18px;
+    font-size: 18px;
 
-  &__link_unactive {
-    color: var(--color-menu-nav-link-unactive);
-    text-decoration: none;
+    &__link_unactive {
+      color: var(--color-menu-nav-link-unactive);
+      text-decoration: none;
 
-    &:hover {
-      color: var(--color-menu-nav-link-hover);
+      &:hover {
+        color: var(--color-menu-nav-link-hover);
+      }
     }
-  }
 
-  &__link_active {
-    font-weight: 600;
-    color: var(--color-menu-nav-link-active);
-    text-decoration: none;
+    &__link_active {
+      font-weight: 600;
+      color: var(--color-menu-nav-link-active);
+      text-decoration: none;
+    }
   }
 }

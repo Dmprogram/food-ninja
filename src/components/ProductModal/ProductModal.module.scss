@@ -20,6 +20,7 @@
     padding: 25px 20px 10px;
     &-title {
       margin-bottom: 20px;
+      color: var(--color-product-modal-title);
       h4 {
         font-size: 18px;
         font-weight: 700;
@@ -37,6 +38,7 @@
         margin-bottom: 5px;
         font-size: 16px;
         font-weight: 500;
+        color: var(--color-product-modal-size);
       }
     }
 
@@ -51,6 +53,7 @@
       font-weight: 700;
       line-height: 1;
       letter-spacing: -1px;
+      color: var(--color-product-modal-price);
     }
     &-weight {
       font-size: 14px;
@@ -72,5 +75,11 @@
       border-radius: 0;
       box-shadow: 0 0 8px rgb(6 5 50/12%);
     }
+  }
+  .product-modal__close-icon:global(.MuiToolbar-root) {
+    color: var(--color-product-modal-close-icon);
+    position: absolute;
+    right: 0;
+    overflow: visible;
   }
 }
