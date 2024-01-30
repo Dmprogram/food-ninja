@@ -20,6 +20,7 @@ export const App = () => {
   const dispatch = useAppDispatch()
 
   const { darkTheme, toggleTheme } = useContext(ThemeContext)
+
   useEffect(() => {
     dispatch(fetchCategories())
   }, [])
