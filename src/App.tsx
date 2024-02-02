@@ -6,6 +6,7 @@ import { CategoriesNavBar } from '@/components/CategoriesNavBar/CategoriesNavBar
 import { MenuNavBar } from '@/components/MenuNavBar/MenuNavBar'
 import { CategoriesWrapper } from '@/components/Wrapper/CategoriesWrapper'
 import { ThemeContext } from '@/contexts/ThemeContext/ThemeContext'
+import { TThemeContext } from '@/contexts/ThemeContext/types'
 import { useAppDispatch } from '@/hooks/useReduxHooks'
 import { CartPage } from '@/pages/CartPage/CartPage'
 import { Category1 } from '@/pages/Category1/Category1'
@@ -19,7 +20,7 @@ import { fetchCategories } from '@/redux/features/categoriesSlice/categoriesActi
 export const App = () => {
   const dispatch = useAppDispatch()
 
-  const { darkTheme, toggleTheme } = useContext(ThemeContext)
+  const { darkTheme, toggleTheme } = useContext(ThemeContext) as TThemeContext
 
   useEffect(() => {
     dispatch(fetchCategories())

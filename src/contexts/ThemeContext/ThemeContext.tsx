@@ -1,23 +1,29 @@
-import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useMemo, useState } from 'react'
 
 import { TThemeContext, TThemeProvider } from '@/contexts/ThemeContext/types'
-import { useThemeDetector } from '@/hooks/useThemeDetector'
+import { useSystemThemeDetector } from '@/hooks/useSystemThemeDetector'
 
-export const ThemeContext = createContext<TThemeContext>({
-  darkTheme: true,
-  toggleTheme: () => undefined,
-})
+export const ThemeContext = createContext<TThemeContext | null>(null)
 
 export const ThemeProvider = ({ children }: TThemeProvider) => {
-  const isSystemDarkTheme = useThemeDetector()
-  const [darkTheme, setDarkTheme] = useState(isSystemDarkTheme)
+  const getCurrentTheme = (isSystemDarkTheme: boolean) => {
+    const themeIsDarkJson = localStorage.getItem('themeIsDark')
+    if (themeIsDarkJson !== null) {
+      const themeIsDark: boolean = JSON.parse(themeIsDarkJson)
+      return themeIsDark
+    }
+    return isSystemDarkTheme
+  }
+
+  const isSystemDarkTheme = useSystemThemeDetector()
+  const [darkTheme, setDarkTheme] = useState(getCurrentTheme(isSystemDarkTheme))
 
   const toggleTheme = useCallback(() => {
-    setDarkTheme((theme) => !theme)
+    setDarkTheme((theme) => {
+      localStorage.setItem('themeIsDark', JSON.stringify(!theme))
+      return !theme
+    })
   }, [])
-  useEffect(() => {
-    setDarkTheme(isSystemDarkTheme)
-  }, [isSystemDarkTheme])
 
   const contextValue = useMemo(
     () => ({
